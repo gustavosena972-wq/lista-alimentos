@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Alimentos</title>
+    <title>Lista de Supermercado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <div class="container">
-        <h1>🍎 Lista de Alimentos</h1>
+        <h1>Lista de Supermercado</h1>
 
-        <div class="input-area">
-            <input type="text" id="inputAlimento" placeholder="Digite um alimento...">
-            <button onclick="adicionar()">Adicionar</button>
-            <button onclick="salvarLista()">💾 Salvar Lista</button>
-        </div>
+        <input type="text" id="inputAlimento" placeholder="Digite um alimento">
+        <button onclick="adicionarAlimento()">Adicionar</button>
+        <button onclick="salvarLista()">💾 Salvar Lista</button>
 
-        <ul id="lista"></ul>
+        <p id="mensagemSalva" style="color: green; font-weight: bold; display: none;">
+            Lista salva com sucesso ✅
+        </p>
+
+        <ul id="listaAlimentos"></ul>
     </div>
 
     <script src="script.js"></script>

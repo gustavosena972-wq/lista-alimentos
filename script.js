@@ -1,48 +1,58 @@
+// Array global pegando do LocalStorage
 let listaDeAlimentos = JSON.parse(localStorage.getItem("minhaLista")) || [];
-function adicionar() {
-    const input = document.getElementById("inputAlimento");
-    const lista = document.getElementById("lista");
 
-    if (input.value.trim() === "") return;
+// Função para renderizar a lista
+function renderizarLista() {
+    const ul = document.getElementById("listaAlimentos");
+    ul.innerHTML = "";
 
-    const li = document.createElement("li");
-    li.textContent = input.value;
+    listaDeAlimentos.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = item.nome;
 
-    const botao = document.createElement("button");
-    botao.textContent = "X";
-    botao.className = "remover";
+        if (item.riscado) li.classList.add("riscado");
 
-    li.addEventListener("click", () => {
-        li.classList.toggle("riscado");
-    });
-    function salvarLista() {
-        localStorage.setItem("minhaLista", JSON.stringify(listaDeAlimentos));
-        alert("Lista salva com sucesso! ✅");
-    }
-    // Exemplo: adicionar alimento
-    function adicionarAlimento() {
-        const input = document.getElementById("inputAlimento");
-        const nome = input.value.trim();
-        if (nome !== "") {
+        // Clicar para riscar/desmarcar
+        li.addEventListener("click", () => {
+            li.classList.toggle("riscado");
+            listaDeAlimentos[index].riscado = li.classList.contains("riscado");
+            salvarLista();
+        });
 
-            listaDeAlimentos.push({ nome: nome, riscado: false });
-            input.value = "";
+        // Duplo clique para remover
+        li.addEventListener("dblclick", () => {
+            listaDeAlimentos.splice(index, 1);
             renderizarLista();
-            salvarLista(); // salva automaticamente
-        }
-    }
-    botao.onclick = function () {
-        lista.removeChild(li);
-    };
+            salvarLista();
+        });
 
-    li.appendChild(botao);
-    lista.appendChild(li);
-
-    input.value = "";
+        ul.appendChild(li);
+    });
 }
+
+// Função para adicionar alimentos
+function adicionarAlimento() {
+    const input = document.getElementById("inputAlimento");
+    const nome = input.value.trim();
+    if (nome !== "") {
+        listaDeAlimentos.push({ nome: nome, riscado: false });
+        input.value = "";
+        renderizarLista();
+        salvarLista();
+    }
+}
+
+// Função para salvar no LocalStorage e mostrar mensagem
 function salvarLista() {
     localStorage.setItem("minhaLista", JSON.stringify(listaDeAlimentos));
-    alert("Lista salva com sucesso! ✅");
-}
-renderizarLista();
 
+    const msg = document.getElementById("mensagemSalva");
+    msg.style.display = "block";
+
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 2000);
+}
+
+// Renderiza lista ao abrir a página
+window.onload = renderizarLista;

@@ -1,47 +1,47 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af') no-repeat center center/cover;
+    padding: 0;
     height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
     border-radius: 15px;
-    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
     text-align: center;
-    color: white;
 }
 
 h1 {
     margin-bottom: 20px;
 }
 
-.input-area {
-    display: flex;
-    gap: 10px;
-}
-
-input {
-    flex: 1;
+input,
+button {
     padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 5px 0;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 button {
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
+    cursor: pointer;
     background-color: #4CAF50;
     color: white;
-    cursor: pointer;
-    font-weight: bold;
+    border: none;
+    margin-left: 5px;
 }
 
 button:hover {
@@ -49,70 +49,19 @@ button:hover {
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin-top: 20px;
 }
 
 li {
-    background: #2c2c2c;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    li {
-        /* o que você já tem */
-        background: #2c2c2c;
-        padding: 10px;
-
-        /* adiciona isso */
-        animation: aparecer 0.3s ease;
-    }
-
-    li:hover {
-        transform: scale(1.02);
-        transition: 0.2s;
-    }
-}
-
-.remover {
-    background-color: #f44336;
-    border: none;
-    color: white;
-    padding: 5px 8px;
-    border-radius: 5px;
+    font-size: 18px;
+    padding: 8px;
     cursor: pointer;
+    border-bottom: 1px solid #ddd;
 }
 
-.riscado {
-    text-decoration: line-through;
-    text-decoration-color: red;
-    /* cor do risco */
-    color: #ff4d4d;
-    /* deixa o texto levemente vermelho também */
-    opacity: 0.7;
-}
-
-li {
-    animation: aparecer 0.3s ease;
-}
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.riscado {
+li.riscado {
     text-decoration: line-through;
     color: red;
 }
