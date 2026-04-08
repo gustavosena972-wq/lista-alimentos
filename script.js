@@ -23,4 +23,8 @@ function adicionar() {
 
     input.value = "";
 }
+function salvarLista() {
+    localStorage.setItem("minhaLista", JSON.stringify(listaDeAlimentos));
+    alert("Lista salva com sucesso! ✅");
+}
 
