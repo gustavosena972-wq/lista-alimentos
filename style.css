@@ -111,3 +111,8 @@ li {
         transform: translateY(0);
     }
 }
+
+.riscado {
+    text-decoration: line-through;
+    color: red;
+}

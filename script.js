@@ -11,6 +11,9 @@ function adicionar() {
     botao.textContent = "X";
     botao.className = "remover";
 
+    li.addEventListener("click", () => {
+        li.classList.toggle("riscado");
+    });
     botao.onclick = function () {
         lista.removeChild(li);
     };
@@ -20,3 +23,4 @@ function adicionar() {
 
     input.value = "";
 }
+
